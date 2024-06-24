@@ -1,0 +1,90 @@
+.wrapper {
+    --search-rounded: 92px;
+    --search-height: 46px;
+    --search-top-spacer: 9px;
+    --search-space-width: 52px;
+
+    width: 100%;
+    height: var(--default-layout-header-height);
+    box-shadow: 0 1px 1px rgb(0 0 0 / 12%);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.inner {
+    width: var(--default-layout-width);
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 24px;
+    & input {
+        flex: 1px;
+        font-size: 1.6rem;
+        background: transparent;
+        height: 100%;
+        color: var(--black);
+        caret-color: var(--primary);
+    }
+    & input:not(:placeholder-shown) ~ .search-btn{ // input khi ko có placeholder thì ta trỏ đến .search-btn r css.
+        color: rgba(22, 24, 35, 0.75);
+    }
+}
+
+.logo {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.menu-btn{
+    margin-left: 25px;
+    font-size: 20px;
+    background-color: transparent;
+    cursor: pointer;
+}
+
+.action{
+    display: flex;
+    align-items: center;
+    &_btn{
+        background-color: transparent;  
+        font-size: 2.2rem;
+        color: #161823;
+        padding: 4px 12px;
+        margin-left: 20px;
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        & button{
+            cursor: pointer;
+            background-color: transparent;
+        }
+        & .icon-mess{
+            position: relative;
+            z-index: 1;
+            & span{
+                position: absolute;
+                top: 0;
+                right: 0;
+                transform: translate(10px, -5px);
+                font-size: 14px;
+                font-weight: 600;
+                padding: 1px 6px;
+                border-radius: 10px;
+                background: rgb(254, 44, 85);
+                color: #fff;
+                z-index: 2;
+            }
+        }
+    }
+}
+.user-avatar{
+    width: 32px;
+    height: 32px;
+    object-fit: cover;
+    border-radius: 50%;
+    cursor: pointer;
+    margin-left: 12px;
+}

@@ -1,0 +1,78 @@
+.search {
+    position: relative;
+    width: 361px;
+    height: var(--search-height);
+    border-radius: var(--search-rounded);
+    background-color: rgba(22, 24, 35, 0.06);
+    padding-left: 16px;
+    display: flex;
+    border: 1.5px solid transparent;
+    input {
+        flex: 1;
+        height: 100%;
+        color: var(--black);
+        font-size: 1.6rem;
+        caret-color: var(--primary);
+        background-color: transparent;
+    }
+
+    input:not(:placeholder-shown) ~ .search-btn {
+        color: rgba(22, 24, 35, 0.75);
+    }
+
+    &::after {
+        position: absolute;
+        content: '';
+        top: var(--search-top-spacer);
+        right: var(--search-space-width);
+        width: 1px;
+        background-color: rgba(22, 24, 35, 0.12);
+        height: calc(var(--search-height) - 2 * var(--search-top-spacer));
+    }
+    &:focus-within {
+        // thuộc tính này cho phép cta lm những thứ ta muốn ở thẻ cha khi thk thẻ con input đc focus.
+        border: 1.5px solid rgba(22, 24, 35, 0.2);
+    }
+}
+
+.search-result {
+    width: 361px;
+}
+
+.search-btn {
+    width: var(--search-space-width);
+    height: 100%;
+    border-top-right-radius: var(--search-rounded);
+    border-bottom-right-radius: var(--search-rounded);
+    font-size: 1.8rem;
+    color: rgba(22, 24, 35, 0.34);
+    &:hover {
+        cursor: pointer;
+        background: rgba(22, 24, 35, 0.03);
+    }
+    &:active {
+        background-color: rgba(22, 24, 35, 0.06);
+    }
+}
+.clear,
+.loading {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    right: calc(var(--search-space-width) + 16px);
+    color: rgba(22, 24, 35, 0.34);
+}
+.loading {
+    animation: spin 1s linear infinite;
+}
+@keyframes spin {
+    from {
+        transform: translateY(-50%) rotate(0);
+    }
+    to {
+        transform: translateY(-50%) rotate(360deg);
+    }
+}
+.account {
+    padding: 8px 16px;
+}
