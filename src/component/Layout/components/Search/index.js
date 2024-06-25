@@ -21,7 +21,8 @@ function Search() {
     const [loading, setLoading] = useState(false);
 
     const refValue = useRef();
-    const handleFocus = () => {
+
+    const handleRemoveFocus = () => {
         setSearchValue('');
         refValue.current.focus();
     };
@@ -29,6 +30,18 @@ function Search() {
     const handleShowTippy = () => {
         setShowResult(false);
     };
+
+    const handleSearch = (e) => {
+        const valueSearch = e.target.value;
+        if (!valueSearch.startsWith(' ')) {
+            // nếu giá trị của input không bắt đầu bằng khoảng trắng thì ta set lại searchValue.
+            setSearchValue(valueSearch);
+        }
+    };
+
+    const handleSubmit = (e) => {
+        e.preventDefault();
+    };//Bên css ta đã set cho nó là khi focus sẽ bị show border nên mặc định khi ấn vào thk con thì nó cx sẽ tự động focus nên ta xóa cái mặc định đấy đi.
 
     const debounce = useDebounce(searchValue, 800);
     //Khi ta tạo biến debounce bằng hook ta tự custom thì ban đầu debounce sẽ nhận val = '', vì nó nhận val = value của searchValue.
@@ -110,11 +123,11 @@ function Search() {
                     value={searchValue}
                     placeholder="Tìm kiếm"
                     spellCheck={false}
-                    onChange={(e) => setSearchValue(e.target.value)}
+                    onChange={handleSearch}
                     onFocus={() => setShowResult(true)}
                 />
                 {!!searchValue && !loading && (
-                    <button className={cx('clear')} onClick={handleFocus}>
+                    <button className={cx('clear')} onClick={handleRemoveFocus}>
                         <FontAwesomeIcon icon={faCircleXmark} />
                     </button>
                 )}
@@ -123,7 +136,7 @@ function Search() {
                         <FontAwesomeIcon icon={faSpinner} />
                     </button>
                 )}
-                <button className={cx('search-btn')}>
+                <button className={cx('search-btn')} onMouseDown={handleSubmit}>
                     <SearchIcon />
                 </button>
             </div>

@@ -1,6 +1,6 @@
 const images = {
-    logo: require('~/assets/images/logo.svg'),
-    noImg: require('~/assets/images/noImg.webp')
+    logo: require('~/assets/images/logo.svg').default,
+    noImg: require('~/assets/images/avatar.webp')
 };
 
 export default images;

@@ -20,13 +20,17 @@ import {
 } from '@fortawesome/free-solid-svg-icons';
 import Tippy from '@tippyjs/react';
 import 'tippy.js/dist/tippy.css';
+import { Link } from 'react-router-dom';
+
 import styles from './Header.module.scss';
 import images from '~/assets/images';
 import Button from '~/component/Button';
 import Menu from '~/component/Popper/Menu';
-import Search from '../Search'
+import Search from '../Search';
 import { MessageIcon, UploadIcon, ShareIcon } from '~/component/Icons';
 import Image from '~/component/Images';
+import routesConfig from '~/config/routes';
+
 
 const cx = classNames.bind(styles);
 const MENU_ITEM = [
@@ -94,7 +98,9 @@ function Header() {
         <header className={cx('wrapper')}>
             <div className={cx('inner')}>
                 <div className={cx('logo')}>
-                    <img src={images.logo.default} />
+                    <Link to={routesConfig.home}>
+                        <img src={images.logo} alt='' />
+                    </Link>
                 </div>
                 <div>
                     <Search />

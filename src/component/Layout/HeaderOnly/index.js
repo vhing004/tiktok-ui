@@ -10,6 +10,6 @@ function HeaderOnly({children}) {
         </div>
      );
 }
-// ta tạo ra 1 file DedaultLayout như này để mặc định những cái tĩnh của trang web khi route sang trang khác mà nó ko thay đổi mà nó chỉ thay đổi phần Content thôi.
+// ta tạo ra 1 file DefaultLayout như này để mặc định những cái tĩnh của trang web khi route sang trang khác mà nó ko thay đổi mà nó chỉ thay đổi phần Content thôi.
 
 export default HeaderOnly;
