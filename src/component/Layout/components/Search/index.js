@@ -2,13 +2,15 @@ import { faCircleXmark, faSpinner } from '@fortawesome/free-solid-svg-icons';
 import { useEffect, useState, useRef } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import HeadLessTippy from '@tippyjs/react/headless';
+
+// nếu bên file kia export hàm const thì ta dùng import * as.
+import * as searchService from '~/apiService/searchService';
 import { Wrapper as PopperWrapper } from '~/component/Popper';
 import AccountItem from '~/component/AccountItem/AccountItem';
 import { SearchIcon } from '~/component/Icons';
 import classNames from 'classnames/bind';
 import css from './Search.module.scss';
 import { useDebounce } from '~/hooks';
-import * as request from '~/utils/request';
 // import axios from 'axios';
 
 const cx = classNames.bind(css);
@@ -37,25 +39,52 @@ function Search() {
             return; // trim() ngăn chặn khoảng trắng là space
         }
 
-        setLoading(true);
+        const fetchApi = async () => {
+            setLoading(true);
 
-        request
-            .get('users/search', {
-                params: {
-                    q: debounce,
-                    type: 'less',
-                },
-            })
-            // chỗ q= kia sẽ là chỗ lưu kết quả tìm kiếm mà khi ta truyền searchValue vào thì value của input sẽ đẩy vào trên đấy
-            // encodeURIComponent khi ta gõ nhưng kí tự gây hiểu lầm hay trùng vs api thì nó sẽ mã hóa .
-            // .then((res) => res.json())
-            .then((res) => {
-                setSearchResult(res.data);
-                setLoading(false);
-            })
-            .catch(() => {
-                setLoading(false);
-            });
+            const result = await searchService.search(debounce);
+            setSearchResult(result);
+
+            setLoading(false);
+        };
+        fetchApi();
+
+        // fetch(`https://tiktok.fullstack.edu.vn/api/users/search?q=${encodeURIComponent(debounce)}&type=less`)
+        // chỗ q= kia sẽ là chỗ lưu kết quả tìm kiếm mà khi ta truyền searchValue vào thì value của input sẽ đẩy vào trên đấy
+        // encodeURIComponent khi ta gõ nhưng kí tự gây hiểu lầm hay trùng vs api thì nó sẽ mã hóa .
+
+        // axios
+        //     .get('https://tiktok.fullstack.edu.vn/api/users/search', {
+        //         params: {
+        //             q: debounce,
+        //             type: 'less',
+        //         },
+        //     })
+        // const fetchApi = async () => {
+        //     try {
+        //         const res = await request.get('users/search', {
+        //             params: {
+        //                 q: debounce,
+        //                 type: 'less',
+        //             },
+        //         });
+        //         setSearchResult(res.data);
+        //         setLoading(false);
+        //     } catch (error) {
+        //         setLoading(false);
+        //     }
+        // };
+        // fetchApi();
+        // .then((res) => res.json())
+        // Khi dùng axios thì nó sẽ trả về chuỗi luôn nên ta ko cần bước này
+        // .then((res) => {
+        //     // console.log(res.data);
+        //     setSearchResult(res.data);
+        //     setLoading(false);
+        // })
+        // .catch(() => {
+        //     setLoading(false);
+        // });
     }, [debounce]);
 
     return (

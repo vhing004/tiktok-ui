@@ -13,5 +13,5 @@ function useDebounce(val, delay) {
 }
 
 export default useDebounce;
-    //Khi ta tạo biến debounce bằng hook ta tự custom thì ban đầu debounce sẽ nhận val = '', vì nó nhận val = value của searchValue.
-    //Khi searchValue thay đổi thì nó sẽ gọi lại callback của useEffect và cái value ta vừa nhận đc sẽ đc thực hiện sau "delay" ta truyền vào.
+//Khi ta tạo biến debounce bằng hook ta tự custom thì ban đầu debounce sẽ nhận val = '', vì nó nhận val = value của searchValue.
+//Khi searchValue thay đổi thì nó sẽ gọi lại callback của useEffect và cái value ta vừa nhận đc sẽ đc thực hiện sau "delay" ta truyền vào.
