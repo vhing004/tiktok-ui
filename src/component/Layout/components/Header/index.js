@@ -1,18 +1,10 @@
 import classNames from 'classnames/bind';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import {
-    faCircleXmark,
-    faSpinner,
-    faMagnifyingGlass,
-    faM,
-    faSignIn,
     faEllipsisVertical,
     faEarthAsia,
     faCircleQuestion,
     faKeyboard,
-    faUpload,
-    faMessage,
-    faCloudUpload,
     faCoins,
     faUser,
     faGear,
@@ -31,44 +23,92 @@ import { MessageIcon, UploadIcon, ShareIcon } from '~/component/Icons';
 import Image from '~/component/Images';
 import routesConfig from '~/config/routes';
 
-
 const cx = classNames.bind(styles);
-const MENU_ITEM = [
-    {
-        icon: <FontAwesomeIcon icon={faEarthAsia} />,
-        title: 'English',
-        children: {
-            title: 'Language',
-            data: [
-                {
-                    code: 'en',
-                    title: 'English',
-                },
-                {
-                    code: 'vn',
-                    title: 'Viet Nam',
-                },
-            ],
-        },
-    },
-    {
-        icon: <FontAwesomeIcon icon={faCircleQuestion} />,
-        title: 'Feedback and Help',
-        to: '/feedback',
-    },
-    {
-        icon: <FontAwesomeIcon icon={faKeyboard} />,
-        title: 'Keyboard shortcuts',
-    },
-];
 
 function Header() {
     const currentUser = true;
-
+    
     const handleMenuChange = (menuItem) => {
         console.log(menuItem);
     };
-
+    
+    const MENU_ITEM = [
+        {
+            icon: <FontAwesomeIcon icon={faEarthAsia} />,
+            title: 'English',
+            children: {
+                title: 'Language',
+                data: [
+                    {
+                        code: 'en',
+                        title: 'English',
+                    },
+                    {
+                        code: 'vn',
+                        title: 'Viet Nam',
+                    },
+                    {
+                        code: 'en',
+                        title: 'English',
+                    },
+                    {
+                        code: 'vn',
+                        title: 'Viet Nam',
+                    },
+                    {
+                        code: 'en',
+                        title: 'English',
+                    },
+                    {
+                        code: 'vn',
+                        title: 'Viet Nam',
+                    },
+                    {
+                        code: 'en',
+                        title: 'English',
+                    },
+                    {
+                        code: 'vn',
+                        title: 'Viet Nam',
+                    },
+                    {
+                        code: 'en',
+                        title: 'English',
+                    },
+                    {
+                        code: 'vn',
+                        title: 'Viet Nam',
+                    },
+                    {
+                        code: 'en',
+                        title: 'English',
+                    },
+                    {
+                        code: 'vn',
+                        title: 'Viet Nam',
+                    },
+                    {
+                        code: 'en',
+                        title: 'English',
+                    },
+                    {
+                        code: 'vn',
+                        title: 'Viet Nam',
+                    },
+                ],
+            },
+        },
+        {
+            icon: <FontAwesomeIcon icon={faCircleQuestion} />,
+            title: 'Feedback and Help',
+            to: '/feedback',
+        },
+        {
+            icon: <FontAwesomeIcon icon={faKeyboard} />,
+            title: 'Keyboard shortcuts',
+        },
+    ];
+    
     const userMenu = [
         {
             icon: <FontAwesomeIcon icon={faUser} />,
@@ -93,7 +133,7 @@ function Header() {
             separate: true,
         },
     ];
-
+    console.log(userMenu);
     return (
         <header className={cx('wrapper')}>
             <div className={cx('inner')}>
@@ -128,6 +168,10 @@ function Header() {
                         </>
                     )}
                     <Menu items={currentUser ? userMenu : MENU_ITEM} onChange={handleMenuChange}>
+                        {/* nếu currentUser là đúng thì sẽ PROP "items" là userMenu và ngược lại.
+                        MENU_ITEM ở đây là đại diện cho khi ở trạng thái logout còn userMenu là trạng thái login.
+                        Và trong userMenu thì đã thêm MENU_ITEM vào trong.
+                        */}
                         {currentUser ? (
                             <Image
                                 className={cx('user-avatar')}
