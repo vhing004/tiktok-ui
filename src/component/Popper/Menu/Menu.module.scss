@@ -12,11 +12,12 @@
 }
 .menu-item {
     width: 100%;
-    border-radius:0;
+    border-radius: 0;
     padding: 11px 16px;
     text-align: left;
-    &.separate{
+    &.separate {
         border-top: 1px solid rgba(22, 24, 35, 0.13);
+        // background: #000;
     }
     &:hover {
         background-color: rgba(22, 24, 35, 0.03);
@@ -24,20 +25,23 @@
 }
 
 // header
-.header{
-    position: relative;
+.header {
     height: 50px;
     margin-top: -8px;
     display: flex;
     align-items: center;
-    padding-right: 25px;
-    }
-.back-btn{
+    width: 100%;
+    flex-shrink: 0;
+}
+.back-btn {
     width: 50px;
     height: 100%;
     background-color: transparent;
     cursor: pointer;
 }
-// .header-title{
-
-// }
+.header-title {
+    padding-right: 40px;
+    text-align: center;
+    line-height: 50px;
+    flex: 1;
+}

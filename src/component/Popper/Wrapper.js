@@ -3,9 +3,10 @@ import css from './Popper.module.scss'
 
 const cx = classNames.bind(css)
 
-function Wrapper( {children, className} ) {
+// PopperWrapper chuyên để bọc tippy.
+function PopperWrapper( {children, className} ) {
     return <div className={cx('wrapper', className)}>
         {children}
     </div>
 }
-export default Wrapper;
+export default PopperWrapper;

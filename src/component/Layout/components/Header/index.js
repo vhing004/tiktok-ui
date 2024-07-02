@@ -95,6 +95,46 @@ function Header() {
                         code: 'vn',
                         title: 'Viet Nam',
                     },
+                    {
+                        code: 'en',
+                        title: 'English',
+                    },
+                    {
+                        code: 'vn',
+                        title: 'Viet Nam',
+                    },
+                    {
+                        code: 'en',
+                        title: 'English',
+                    },
+                    {
+                        code: 'vn',
+                        title: 'Viet Nam',
+                    },
+                    {
+                        code: 'en',
+                        title: 'English',
+                    },
+                    {
+                        code: 'vn',
+                        title: 'Viet Nam',
+                    },
+                    {
+                        code: 'en',
+                        title: 'English',
+                    },
+                    {
+                        code: 'vn',
+                        title: 'Viet Nam',
+                    },
+                    {
+                        code: 'en',
+                        title: 'English',
+                    },
+                    {
+                        code: 'vn',
+                        title: 'Viet Nam',
+                    },
                 ],
             },
         },
@@ -133,7 +173,6 @@ function Header() {
             separate: true,
         },
     ];
-    console.log(userMenu);
     return (
         <header className={cx('wrapper')}>
             <div className={cx('inner')}>

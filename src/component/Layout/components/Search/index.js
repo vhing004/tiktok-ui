@@ -15,22 +15,29 @@ import { useDebounce } from '~/hooks';
 
 const cx = classNames.bind(css);
 function Search() {
+    //state lấy giá trị input
     const [searchValue, setSearchValue] = useState('');
+    // state lưu trữ các result search
     const [searchResult, setSearchResult] = useState([]);
+    //state show ra result
     const [showResult, setShowResult] = useState(true);
+    // state loading
     const [loading, setLoading] = useState(false);
 
     const refValue = useRef();
 
+    // xóa result search đồng thời focus vào input.
     const handleRemoveFocus = () => {
         setSearchValue('');
         refValue.current.focus();
     };
 
+    // ẩn tippy search
     const handleShowTippy = () => {
         setShowResult(false);
     };
 
+    // function không cho khoảng trắng ở đầu.
     const handleSearch = (e) => {
         const valueSearch = e.target.value;
         if (!valueSearch.startsWith(' ')) {
@@ -38,7 +45,7 @@ function Search() {
             setSearchValue(valueSearch);
         }
     };
-
+// hàm ngăn chặn focus
     const handleSubmit = (e) => {
         e.preventDefault();
     };//Bên css ta đã set cho nó là khi focus sẽ bị show border nên mặc định khi ấn vào thk con thì nó cx sẽ tự động focus nên ta xóa cái mặc định đấy đi.
@@ -61,6 +68,16 @@ function Search() {
             setLoading(false);
         };
         fetchApi();
+
+        // fetch(`https://tiktok.fullstack.edu.vn/api/users/search?q=${encodeURIComponent(searchValue)}&type=less`)
+        // .then((res) => res.json())
+        // .then((res) => {
+        //     setSearchResult(res.data);
+        //     setLoading(false);
+        // })
+        // .catch(() => {
+        //     setLoading(false);
+        // });
 
         // fetch(`https://tiktok.fullstack.edu.vn/api/users/search?q=${encodeURIComponent(debounce)}&type=less`)
         // chỗ q= kia sẽ là chỗ lưu kết quả tìm kiếm mà khi ta truyền searchValue vào thì value của input sẽ đẩy vào trên đấy

@@ -15,6 +15,8 @@ function Menu({ children, items = [], onChange }) {
     const [history, setHistory] = useState([{ data: items }]);//data của history sẽ là cái mảng items.
     const current = history[history.length - 1];
     // console.log(current);
+
+    // hàm này để render ra các data trong userMenu.
     const renderItem = () => {
         return current.data.map((item, index) => {
             const isParent = !!item.children; // 2 dấu ! này là để convert sang boolean.
@@ -39,7 +41,7 @@ function Menu({ children, items = [], onChange }) {
     return (
         <Tippy
             interactive
-            // visible
+            visible
             offset={[12, 8]}
             placement="bottom-end"
             hideOnClick="false"
@@ -55,7 +57,7 @@ function Menu({ children, items = [], onChange }) {
                                 }}
                             />
                         )}
-                        {renderItem()}
+                        <div className={cx('menu-scroll')}>{renderItem()}</div>
                     </PopperWrapper>
                 </div>
             )}
