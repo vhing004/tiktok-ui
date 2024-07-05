@@ -1,10 +1,11 @@
+import { useState } from 'react';
 import Tippy from '@tippyjs/react/headless';
+
 import MenuItem from './MenuItem';
 import { Wrapper as PopperWrapper } from '~/component/Popper';
 import classNames from 'classnames/bind';
 import css from './Menu.module.scss';
 import HeaderMenu from './HeaderMenu';
-import { useState } from 'react';
 
 const cx = classNames.bind(css);
 //Ý tưởng là state chứa 1 array, trong array đó có object(s): dạng như là: [{__},{__},...{__}].
@@ -20,7 +21,7 @@ function Menu({ children, items = [], onChange }) {
     const renderItem = () => {
         return current.data.map((item, index) => {
             const isParent = !!item.children; // 2 dấu ! này là để convert sang boolean.
-
+            // console.log(item);
             return (
                 <MenuItem
                     key={index}
@@ -41,7 +42,6 @@ function Menu({ children, items = [], onChange }) {
     return (
         <Tippy
             interactive
-            visible
             offset={[12, 8]}
             placement="bottom-end"
             hideOnClick="false"

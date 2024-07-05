@@ -1,13 +1,13 @@
-.menu_list {
-    width: 224px;
+.menu-list {
+    width: 230px;
 }
 .menu-popper {
-    width: 224px;
+    width: 100%;
     padding: 8px 0;
 }
 .menu-item {
     + .menu-item {
-        margin-left: 0;
+        margin-left: 0; 
     }
 }
 .menu-item {
@@ -25,12 +25,12 @@
 }
 
 // header
-.header {
+.headerMenu {
     height: 50px;
-    margin-top: -8px;
-    display: flex;
-    align-items: center;
     width: 100%;
+    margin-top: -8px;
+    position: relative;
+    background-color: #fff;
     flex-shrink: 0;
 }
 .back-btn {
@@ -40,8 +40,12 @@
     cursor: pointer;
 }
 .header-title {
-    padding-right: 40px;
-    text-align: center;
-    line-height: 50px;
-    flex: 1;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+.menu-scroll{
+    // margin-top: 40px;
+    overflow-y: auto;
 }

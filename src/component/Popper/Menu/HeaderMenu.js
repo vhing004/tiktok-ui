@@ -8,7 +8,7 @@ const cx = classNames.bind(css);
 
 function HeaderMenu({ title, onBack }) {
     return (
-        <header className={cx('header')}>
+        <header className={cx('headerMenu')}>
             <button className={cx('back-btn')} onClick={onBack}>
                 <FontAwesomeIcon icon={faChevronLeft} />
             </button>
